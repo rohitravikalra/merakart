@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="assets/jquery-steps/css/custom-jquery.steps.css">
 <!--=== Breadcrumbs v4 ===-->
     <div class="breadcrumbs-v4">
         <div class="container">
@@ -24,7 +25,7 @@
                             <i class="rounded-x fa fa-check"></i>
                         </div>    
                     </div>
-                    <section id="cart-section">
+                    <section id="cart-section" class="current body" >
                         <%= render partial: 'cart_section' %>
                     </section>
                     
@@ -254,10 +255,10 @@
                     <div class="coupon-code">
                         <div class="row">
                             <div class="col-sm-4 sm-margin-bottom-30">
-                                <h3>Discount Code</h3>
+                                <!-- <h3>Discount Code</h3>
                                 <p>Enter your coupon code</p>
                                 <input class="form-control margin-bottom-10" name="code" type="text">
-                                <button type="button" class="btn-u btn-u-sea-shop">Apply Coupon</button>
+                                <button type="button" class="btn-u btn-u-sea-shop">Apply Coupon</button> -->
                             </div>
                             <div class="col-sm-3 col-sm-offset-5">
                                 <ul class="list-inline total-result">
@@ -309,3 +310,17 @@
         </div><!--/end container-->
     </div>
     <!--=== End Shop Suvbscribe ===-->
+<script src="assets/jquery-steps/build/jquery.steps.js"></script>
+<script src="assets/sky-forms-pro/skyforms/js/jquery.validate.min.js"></script>
+<script src="assets/shop.app.js"></script>
+<script src="assets/forms/page_login.js"></script>
+<script src="assets/plugins/stepWizard.js"></script>
+<script src="assets/forms/product-quantity.js"></script>
+<script>
+    jQuery(document).ready(function() {
+        App.init();
+        Login.initLogin();
+        App.initScrollBar();        
+        StepWizard.initStepWizard();
+});
+</script>

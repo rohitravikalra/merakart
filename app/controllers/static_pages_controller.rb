@@ -63,4 +63,17 @@ class StaticPagesController < ApplicationController
   def checkout
   end
 
+  def modify_cart
+  	key = "#{params[:id]}##{params[:old_qty]}"
+  	if params[:qty].to_i == 0
+	  	session[:user_products].delete(key)
+	  else
+	  	new_key = "#{params[:id]}##{params[:qty]}"
+	  	session[:user_products][new_key] = session[:user_products].delete(key)
+	  end
+	  respond_to do |format|
+	  	format.js { render layout: false}
+	  end
+  end
+
 end

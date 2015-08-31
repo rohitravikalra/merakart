@@ -31,5 +31,19 @@ function addToCart(ele){
 }
 
 function modifyCart(ele){
-	debugger
+	var qty = 0;
+	var old_qty = 1;
+	if(ele.value == "+"){
+		old_qty = document.getElementById("qty"+ele.attributes.data.value).value
+		document.getElementById("qty"+ele.attributes.data.value).value = parseInt(document.getElementById("qty"+ele.attributes.data.value).value)+1+"";
+		qty = document.getElementById("qty"+ele.attributes.data.value).value
+	}
+	else if(ele.value == "-"){
+		if(parseInt(document.getElementById("qty"+ele.attributes.data.value).value) > 1){
+			old_qty = document.getElementById("qty"+ele.attributes.data.value).value
+			document.getElementById("qty"+ele.attributes.data.value).value = parseInt(document.getElementById("qty"+ele.attributes.data.value).value)-1+"";
+			qty = document.getElementById("qty"+ele.attributes.data.value).value
+		}
+	}
+	$.get('/modify-cart', { id : ele.attributes.data.value, qty : qty, old_qty : old_qty }, null, 'script')
 }
