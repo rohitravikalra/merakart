@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   get '/about_us' => 'static_pages#about_us'
   get '/store' => 'static_pages#store_grid'
   get '/show_product' => 'static_pages#product_page'
+  get '/add-to-cart' => 'static_pages#add_to_cart'
+  get '/session-clear' => 'application#clear_session'
+  get '/review' => 'static_pages#review'
+  get '/checkout' => 'static_pages#checkout'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

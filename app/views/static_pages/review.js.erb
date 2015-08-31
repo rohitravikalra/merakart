@@ -1,0 +1,2 @@
+$("#reviews").html("<%= escape_javascript(render(partial: "review")) %>");
+$('#review_count').text("(<%=@count%>)")

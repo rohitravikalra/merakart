@@ -1,0 +1,36 @@
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% session[:user_products].each do |k,v| %>
+          <td class="product-in-table">
+            <img class="img-responsive" src=<%= get_photo_url(v["id"]) %> alt="">
+            <div class="product-it-in">
+              <h3><%= v["name"] %></h3>
+              <span><%= v["category"] %> <%= v["sub_category"] %></span>
+            </div>    
+          </td>
+          <td>$ <%= v["price"] %>.00</td>
+          <td>
+            <button type='button' class="quantity-button" name='subtract' onclick='modifyCart(this)' value='-'>-</button>
+            <input type='text' class="quantity-field" name='qty1' value="<%= k.split('#')[1] %>" id='qty1'/>
+            <button type='button' class="quantity-button" name='add' onclick='modifyCart(this)' value='+'>+</button>
+          </td>
+          <td class="shop-red">$ <%= get_subtotal_for_product(k) %>.00</td>
+          <td>
+            <button type="button" class="close" onclick="modifyCart(this)" ><span>&times;</span><span class="sr-only">Close</span></button>
+          </td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- javascript: document.getElementById("qty1").value++; javascript: subtractQty1();-->

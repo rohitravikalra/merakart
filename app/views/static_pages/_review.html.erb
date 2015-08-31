@@ -1,0 +1,65 @@
+<% if @reviews %>
+  <% @reviews.each do |review| %>
+    <div class="product-comment margin-bottom-40">
+      <div class="product-comment-in">
+        <img class="product-comment-img rounded-x" src="assets/img/team/01.jpg" alt="">
+        <div class="product-comment-dtl">
+          <h4><%= review.user_name %> <!-- <small>22 days ago</small>--></h4>
+          <p><%= review.review %></p>
+          <ul class="list-inline product-ratings">
+          <!-- <li class="reply"><a href="#">Reply</a></li> -->
+            <li class="pull-right">
+              <ul class="list-inline">
+                <% for i in (1..review.rating) do %>
+                  <li><i class="rating-selected fa fa-star"></i></li>
+                <% end %>
+                <% for i in (1..(5-review.rating)) do %>
+                  <li><i class="rating fa fa-star"></i></li>
+                <% end %>
+              </ul>
+            </li>    
+          </ul>
+        </div>
+      </div>    
+    </div>
+  <% end %>
+<% end %>
+<h3 class="heading-md margin-bottom-30">Add a review</h3>
+<form action="assets/php/demo-contacts-process.php" method="post" id="sky-form3" class="sky-form sky-changes-4">
+<fieldset>
+  <div class="margin-bottom-30">
+    <label class="label-v2">Name</label>
+    <label class="input">
+      <input type="text" name="name" id="name">
+    </label>
+  </div>                            
+  <div class="margin-bottom-30">
+    <label class="label-v2">Email</label>
+    <label class="input">
+      <input type="email" name="email" id="email">
+    </label>
+  </div>                              
+  <div class="margin-bottom-30">
+    <label class="label-v2">Review</label>
+    <label class="textarea">
+      <textarea rows="7" name="message" id="message"></textarea>
+    </label>
+  </div>    
+</fieldset>                              
+<footer class="review-submit">
+  <label class="label-v2">Review</label>
+  <div class="stars-ratings">
+    <input type="radio" name="stars-rating" id="stars-rating-5">
+    <label for="stars-rating-5"><i class="fa fa-star"></i></label>
+    <input type="radio" name="stars-rating" id="stars-rating-4">
+    <label for="stars-rating-4"><i class="fa fa-star"></i></label>
+    <input type="radio" name="stars-rating" id="stars-rating-3">
+    <label for="stars-rating-3"><i class="fa fa-star"></i></label>
+    <input type="radio" name="stars-rating" id="stars-rating-2">
+    <label for="stars-rating-2"><i class="fa fa-star"></i></label>
+    <input type="radio" name="stars-rating" id="stars-rating-1">
+    <label for="stars-rating-1"><i class="fa fa-star"></i></label>
+  </div>
+  <button type="button" class="btn-u btn-u-sea-shop btn-u-sm pull-right" id="submit_review">Submit</button>
+</footer>
+</form>

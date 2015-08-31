@@ -1,0 +1,34 @@
+<ul class="list-inline shop-badge badge-lists badge-icons pull-right">
+  <li>
+    <a href="#"><i class="fa fa-shopping-cart"></i></a>
+    <% count = session[:user_products] ? session[:user_products].count : 0 %>
+    <span class="badge badge-sea rounded-x"><%= count %></span>
+    <ul class="list-unstyled badge-open mCustomScrollbar" data-mcs-theme="minimal-dark">
+      <% if session[:user_products] %>
+        <% session[:user_products].each do |k,v| %>
+          <li>
+            <img src=<%= get_photo_url(v["id"]) %> alt="">
+            <button type="button" class="close">×</button>
+            <div class="overflow-h">
+              <span><%= v["name"].capitalize %></span>
+              <small><%= k.split('#')[1] %> x $<%= v["price"] %>.00</small>
+            </div>    
+          </li>
+          <li class="subtotal">
+            <div class="overflow-h margin-bottom-10">
+              <span>Subtotal</span>
+              <span class="pull-right subtotal-cost">$<%= get_the_subtotal %>.00</span>
+            </div>
+            <div class="row">    
+              <div class="col-xs-6">
+              </div>
+              <div class="col-xs-6">
+                <a href="/checkout" class="btn-u btn-u-sea-shop btn-block">Checkout</a>
+              </div>
+            </div>        
+          </li>  
+        <% end %>  
+      <% end %>
+    </ul>
+  </li>
+</ul>

@@ -71,8 +71,8 @@
                         <div class="col-md-4">
                             <div class="product-img product-img-brd">
                                 <a href="/show_product?id=<%= @products[i*3+0].id %>"><img class="full-width img-responsive" src="<%= @products[i*3+0].product_photos[i].photo_file_name %>" alt=""></a>
-                                <a class="product-review" href="shop-ui-inner.html">Quick review</a>
-                                <a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                <a class="product-review" href="javascript:;">Quick review</a>
+                                <a class="add-to-cart" href="javascript:;" onclick="addToCart(this)" data=<%= @products[i*3+0].id %> ><i class="fa fa-shopping-cart"></i>Add to cart</a>
                             </div> 
                             <div class="product-description product-description-brd margin-bottom-30">
                                 <div class="overflow-h margin-bottom-5">
@@ -100,8 +100,8 @@
                         <div class="col-md-4">
                             <div class="product-img product-img-brd">
                                 <a href="/show_product?id=<%= @products[i*3+1].id %>"><img class="full-width img-responsive" src="<%= @products[i*3+1].product_photos[i].photo_file_name %>" alt=""></a>
-                                <a class="product-review" href="shop-ui-inner.html">Quick review</a>
-                                <a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                <a class="product-review" href="javascript:;">Quick review</a>
+                                <a class="add-to-cart" href="javascript:;" onclick="addToCart(this)" data=<%= @products[i*3+1].id %> ><i class="fa fa-shopping-cart"></i>Add to cart</a>
                             </div> 
                             <div class="product-description product-description-brd margin-bottom-30">
                                 <div class="overflow-h margin-bottom-5">
@@ -129,8 +129,8 @@
                         <div class="col-md-4">
                             <div class="product-img product-img-brd">
                                 <a href="/show_product?id=<%= @products[i*3+2].id %>"><img class="full-width img-responsive" src="<%= @products[i*3+2].product_photos[i].photo_file_name %>" alt=""></a>
-                                <a class="product-review" href="shop-ui-inner.html">Quick review</a>
-                                <a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                <a class="product-review" href="javascript:;">Quick review</a>
+                                <a class="add-to-cart" href="javascript:;" onclick="addToCart(this)" data=<%= @products[i*3+2].id %> ><i class="fa fa-shopping-cart"></i>Add to cart</a>
                             </div> 
                             <div class="product-description product-description-brd margin-bottom-30">
                                 <div class="overflow-h margin-bottom-5">
