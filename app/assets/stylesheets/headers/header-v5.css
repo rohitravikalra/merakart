@@ -901,6 +901,17 @@
     overflow: hidden;
 }
 
+.dropdown.mega-menu-custom-i .dropdown-menu{
+    left: 420px !important;
+    width: 369px !important;
+}
+
+.dropdown.mega-menu-custom-ii .dropdown-menu{
+    left: 583px !important;
+    width: 203px !important;
+}
+
+
 @media (min-width: 992px) {
     .header-v5 .mega-menu .dropdown.mega-menu-fullwidth .dropdown-menu {
         margin-left: 10px;

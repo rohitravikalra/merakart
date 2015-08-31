@@ -7,8 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<%= render partial: 'layouts/assets' %>
+<%= render partial: 'layouts/header' %>
 <%= yield %>
-
+<%= render partial: 'layouts/footer' %>
 </body>
 </html>

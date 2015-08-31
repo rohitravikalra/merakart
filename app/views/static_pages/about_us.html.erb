@@ -1,12 +1,9 @@
-<%= render partial: 'layouts/assets' %>
-<%= render partial: 'layouts/header' %>
 <!--=== Breadcrumbs ===-->
 <div class="breadcrumbs">
 	<div class="container">
     <h1 class="pull-left">About Us</h1>
     <ul class="pull-right breadcrumb">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="">Pages</a></li>
+      <li><%= link_to 'Home', root_path %></li>
       <li class="active">About Us</li>
     </ul>
   </div><!--/container-->
@@ -34,7 +31,7 @@
     </div>
   	<div class="col-md-6 md-margin-bottom-40">
       <div class="responsive-video">
-        <iframe src="http://player.vimeo.com/video/9679622" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> 
+        <iframe src="https://www.youtube.com/embed/BvmfmUca2rM" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> 
       </div>
     </div>
   </div><!--/row-->
@@ -94,4 +91,3 @@
   </div>
 	<!-- End Meer Our Team -->
 </div>
-<%= render partial: 'layouts/footer' %>
