@@ -17,16 +17,16 @@
                         <!-- Master Slider -->
                         <div class="master-slider ms-skin-default" id="masterslider">
                             <div class="ms-slide">
-                                <img class="ms-brd" src="assets/img/blank.gif" data-src="assets/img/blog/28.jpg" alt="lorem ipsum dolor sit">
-                                <img class="ms-thumb" src="assets/img/blog/28-thumb.jpg" alt="thumb">
+                                <img class="ms-brd" style="width:550px;height:560px" src="assets/blank.gif" data-src=<%= @product_photos[0].photo_file_name %> alt="lorem ipsum dolor sit">
+                                <img class="ms-thumb" style="width:180px;height:170px" src=<%= @product_photos[0].photo_file_name %> alt="thumb">
                             </div>
                             <div class="ms-slide">
-                                <img src="assets/img/blank.gif" data-src="assets/img/blog/29.jpg" alt="lorem ipsum dolor sit">
-                                <img class="ms-thumb" src="assets/img/blog/29-thumb.jpg" alt="thumb">
+                                <img style="width:550px;height:560px" src="assets/blank.gif" data-src=<%= @product_photos[1].photo_file_name %> alt="lorem ipsum dolor sit">
+                                <img class="ms-thumb" style="width:180px;height:170px" src=<%= @product_photos[1].photo_file_name %> alt="thumb">
                             </div>
                             <div class="ms-slide">
-                                <img src="assets/img/blank.gif" data-src="assets/img/blog/30.jpg" alt="lorem ipsum dolor sit">
-                                <img class="ms-thumb" src="assets/img/blog/30-thumb.jpg" alt="thumb">
+                                <img style="width:550px;height:560px" src="assets/blank.gif" data-src=<%= @product_photos[2].photo_file_name %> alt="lorem ipsum dolor sit">
+                                <img class="ms-thumb" style="width:180px;height:170px" src=<%= @product_photos[2].photo_file_name %> alt="thumb">
                             </div>
                         </div>
                         <!-- End Master Slider -->
@@ -35,16 +35,16 @@
 
                 <div class="col-md-6">
                     <div class="shop-product-heading">
-                        <h2>Corinna Foley</h2>
-                        <ul class="list-inline shop-product-social">
+                        <h2><%= @product.name.capitalize %></h2>
+                        <!-- <ul class="list-inline shop-product-social">
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                             <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                             <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                        </ul>
+                        </ul> -->
                     </div><!--/end shop product social-->
 
-                    <ul class="list-inline product-ratings margin-bottom-30">
+                    <!-- <ul class="list-inline product-ratings margin-bottom-30">
                         <li><i class="rating-selected fa fa-star"></i></li>
                         <li><i class="rating-selected fa fa-star"></i></li>
                         <li><i class="rating-selected fa fa-star"></i></li>
@@ -53,18 +53,18 @@
                         <li class="product-review-list">
                             <span>(1) <a href="#">Review</a> | <a href="#"> Add Review</a></span>
                         </li>
-                    </ul><!--/end shop product ratings-->
+                    </ul> --><!--/end shop product ratings-->
 
                     <p>Integer <strong>dapibus ut elit</strong> non volutpat. Integer auctor purus a lectus suscipit fermentum. Vivamus lobortis nec erat consectetur elementum.</p><br>
 
                     <ul class="list-inline shop-product-prices margin-bottom-30">
-                        <li class="shop-red">$57.00</li>
-                        <li class="line-through">$70.00</li>
+                        <li class="shop-red">$<%= @product.price %>.00</li>
+                        <li class="line-through">$<%= @product.price+15 %>.00</li>
                         <li><small class="shop-bg-red time-day-left">4 days left</small></li>
                     </ul><!--/end shop product prices-->
 
-                    <h3 class="shop-product-title">Size</h3>
-                    <ul class="list-inline product-size margin-bottom-30">
+                    <!-- <h3 class="shop-product-title">Size</h3>
+                     <ul class="list-inline product-size margin-bottom-30">
                         <li>
                             <input type="radio" id="size-1" name="size">
                             <label for="size-1">S</label>
@@ -81,9 +81,9 @@
                             <input type="radio" id="size-4" name="size">
                             <label for="size-4">XL</label>
                         </li>    
-                    </ul><!--/end product size-->
+                    </ul> --><!--/end product size -->
 
-                    <h3 class="shop-product-title">Color</h3>
+                    <!-- <h3 class="shop-product-title">Color</h3>
                     <ul class="list-inline product-color margin-bottom-30">
                         <li>
                             <input type="radio" id="color-1" name="color">
@@ -97,7 +97,7 @@
                             <input type="radio" id="color-3" name="color">
                             <label class="color-three" for="color-3"></label>
                         </li>  
-                    </ul><!--/end product color-->
+                    </ul> --><!--/end product color-->
 
                     <h3 class="shop-product-title">Quantity</h3>
                     <div class="margin-bottom-40">
@@ -119,7 +119,7 @@
                             <a href="#">Add to Compare</a>
                         </li>
                     </ul>    
-                    <p class="wishlist-category"><strong>Categories:</strong> <a href="#">Clothing,</a> <a href="#">Shoes</a></p>
+                    <p class="wishlist-category"><strong>Category:</strong> <a href="/store?type=<%= @product.sub_category %>">@product.sub_category</a></p>
                 </div>
             </div><!--/end row-->
         </div>    
@@ -415,4 +415,4 @@
             </div>
         </div><!--/end container-->
     </div>
-    <!--=== End Shop Suvbscribe ===-->
+    <!--=== End Shop Suvbscribe ===

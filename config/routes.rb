@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'static_pages#home'
   get '/about_us' => 'static_pages#about_us'
   get '/store' => 'static_pages#store_grid'
+  get '/show_product' => 'static_pages#product_page'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -13,10 +13,19 @@ class StaticPagesController < ApplicationController
   	elsif @type == "beauty"
   		@products = Product.where('sub_category like ? or ?', @type, "fragrance").page(params[:page]).per_page(9)
   		@count = Product.where('sub_category like ? or ?', @type, "fragrance").count
+  	elsif @type == "all_acc"
+  		@products = Product.where('sub_category like ? or ? or ? or ?',"bags", "hats", "beauty", "jewellery").page(params[:page]).per_page(9)
+  		@count = Product.where('sub_category like ? or ? or ? or ?',"bags", "hats", "beauty", "jewellery").count
+  		@type = "Accessories"
   	else
   		@products = Product.where('sub_category like ?', @type).page(params[:page]).per_page(9)
   		@count = Product.where('sub_category like ?', @type).count
    	end
+  end
+
+  def product_page
+  	@product = Product.find(params[:id])
+  	@product_photos = @product.product_photos
   end
 
 end

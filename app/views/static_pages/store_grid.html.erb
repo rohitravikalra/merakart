@@ -5,8 +5,8 @@
             <h1>Maecenas <span class="shop-green">enim</span> sapien</h1>
             <ul class="breadcrumb-v4-in">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="">Product</a></li>
-                <li class="active">Product Filter Page</li>
+                <li><a href="">Products</a></li>
+                <li class="active"><%= @type.capitalize %></li>
             </ul>
         </div><!--/end container-->
     </div> 
@@ -20,12 +20,12 @@
 
             <div class="col-md-10">
                 <div class="row margin-bottom-5">
-                    <div class="col-sm-4 result-category">
+                    <div class="col-sm-5 result-category">
                         <h2><%= @type %></h2>
                         <%= hidden_field_tag 'type', @type %>
                         <small class="shop-bg-red badge-results"><%= @count %> Results</small>
                     </div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-7">
                         <!-- <ul class="list-inline clear-both">
                             <li class="grid-list-icons">
                                 <a href="shop-ui-filter-list.html"><i class="fa fa-th-list"></i></a>
@@ -64,19 +64,20 @@
                 </div><!--/end result category-->
 
                 <div class="filter-results">
+
                 <% will_paginate @products %>
                   <% for i in (0..2) do %>
                     <div class="row illustration-v2 margin-bottom-30">
                         <div class="col-md-4">
                             <div class="product-img product-img-brd">
-                                <a href="#"><img class="full-width img-responsive" src="<%= @products[i*3+0].product_photos[i].photo_file_name %>" alt=""></a>
+                                <a href="/show_product/?id=<%= @products[i*3+0].id %>"><img class="full-width img-responsive" src="<%= @products[i*3+0].product_photos[i].photo_file_name %>" alt=""></a>
                                 <a class="product-review" href="shop-ui-inner.html">Quick review</a>
                                 <a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                             </div> 
                             <div class="product-description product-description-brd margin-bottom-30">
                                 <div class="overflow-h margin-bottom-5">
                                     <div class="pull-left">
-                                        <h4 class="title-price"><a href="shop-ui-inner.html"><%= @products[i*3+0].name %></a></h4>
+                                        <h4 class="title-price"><a href="/show_product/?id=<%= @products[i*3+0].id %>"><%= @products[i*3+0].name.capitalize %></a></h4>
                                         <% gender = @products[i*3+0].category == "M" ? "Men" : "Women" %>
                                         <span class="gender text-uppercase"><%= gender %></span>
                                         <span class="gender"><%= @products[i*3+0].sub_category.capitalize %></span>
@@ -98,14 +99,14 @@
                         </div>
                         <div class="col-md-4">
                             <div class="product-img product-img-brd">
-                                <a href="#"><img class="full-width img-responsive" src="<%= @products[i*3+1].product_photos[i].photo_file_name %>" alt=""></a>
+                                <a href="/show_product/?id=<%= @products[i*3+0].id %>"><img class="full-width img-responsive" src="<%= @products[i*3+1].product_photos[i].photo_file_name %>" alt=""></a>
                                 <a class="product-review" href="shop-ui-inner.html">Quick review</a>
                                 <a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                             </div> 
                             <div class="product-description product-description-brd margin-bottom-30">
                                 <div class="overflow-h margin-bottom-5">
                                     <div class="pull-left">
-                                        <h4 class="title-price"><a href="shop-ui-inner.html"><%= @products[i*3+1].name %></a></h4>
+                                        <h4 class="title-price"><a href="/show_product/?id=<%= @products[i*3+1].id %>"><%= @products[i*3+1].name.capitalize %></a></h4>
                                         <% gender = @products[i*3+1].category == "M" ? "Men" : "Women" %>
                                         <span class="gender text-uppercase"><%= gender %></span>
                                         <span class="gender"><%= @products[i*3+1].sub_category.capitalize %></span>
@@ -127,14 +128,14 @@
                         </div>
                         <div class="col-md-4">
                             <div class="product-img product-img-brd">
-                                <a href="#"><img class="full-width img-responsive" src="<%= @products[i*3+2].product_photos[i].photo_file_name %>" alt=""></a>
+                                <a href="/show_product/?id=<%= @products[i*3+0].id %>"><img class="full-width img-responsive" src="<%= @products[i*3+2].product_photos[i].photo_file_name %>" alt=""></a>
                                 <a class="product-review" href="shop-ui-inner.html">Quick review</a>
                                 <a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                             </div> 
                             <div class="product-description product-description-brd margin-bottom-30">
                                 <div class="overflow-h margin-bottom-5">
                                     <div class="pull-left">
-                                        <h4 class="title-price"><a href="shop-ui-inner.html"><%= @products[i*3+2].name %></a></h4>
+                                        <h4 class="title-price"><a href="/show_product/?id=<%= @products[i*3+2].id %>"><%= @products[i*3+2].name.capitalize %></a></h4>
                                         <% gender = @products[i*3+2].category == "M" ? "Men" : "Women" %>
                                         <span class="gender text-uppercase"><%= gender %></span>
                                         <span class="gender"><%= @products[i*3+2].sub_category.capitalize %></span>
@@ -160,11 +161,13 @@
 
                 <div class="text-center">
                     <ul class="pagination pagination-v2">
-                        <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                        <li><a href="#">1</a></li>
-                        <li class="active"><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                      <% if @products.previous_page %>
+                        <li><%= link_to '', params.merge(:page => @products.previous_page), class: 'fa fa-angle-left' %></li>
+                      <% end %>
+                        <li class="active" ><%= link_to @products.current_page, 'javascript:;'%></li>
+                      <% if @products.next_page %>
+                        <li><%= link_to '', params.merge(:page => @products.next_page), class: 'fa fa-angle-right' %></li>
+                      <% end %>
                     </ul>                                                            
                 </div><!--/end pagination-->
             </div>
