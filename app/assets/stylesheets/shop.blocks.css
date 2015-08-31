@@ -118,7 +118,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url(../img/breadcrumbs-img.jpg);
+  background-image: url(../assets/breadcrumbs-img.jpg);
 }
 
 .breadcrumbs-v4:before {

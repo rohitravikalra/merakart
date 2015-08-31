@@ -32,6 +32,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Use Will_paginate for pagination
+gem 'will_paginate'
+
 # Use Paperclip for file attachments
 gem 'paperclip', git: "git://github.com/thoughtbot/paperclip.git"
 
