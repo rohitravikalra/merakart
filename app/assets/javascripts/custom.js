@@ -12,6 +12,9 @@ $(function(){
 		id = e.currentTarget.baseURI.split('=')[1]
 		$.get('/review',{id:id,name:name,email:email,review:review,rating:rating}, null, 'script'); 
 	});
+	$('.form-control').on('focus',function(){
+		$(this).removeClass('error-class');
+	});
 });
 
 function setActivePage(){
@@ -24,7 +27,7 @@ function setActivePage(){
 function addToCart(ele){
 	var id = ele.attributes.data.value
 	var qty = 1;
-	if(/product_show/.exec(this.location.href)){
+	if(/show_product/.exec(this.location.href)){
 		qty = $('#qty').val();
 	}
 	$.get('/add-to-cart', { data_id : id, data_qty : qty }, null, 'script')
@@ -45,5 +48,39 @@ function modifyCart(ele){
 			qty = document.getElementById("qty"+ele.attributes.data.value).value
 		}
 	}
-	$.get('/modify-cart', { id : ele.attributes.data.value, qty : qty, old_qty : old_qty }, null, 'script')
+	if(/cart-close/.exec(ele.className))
+		$.get('/modify-cart', { id : ele.attributes.data.value, qty : qty, old_qty : old_qty, type : 'cart' }, null, 'script')
+	else
+		$.get('/modify-cart', { id : ele.attributes.data.value, qty : qty, old_qty : old_qty }, null, 'script')
 }
+
+function formValidation(e){
+	var valuesArr = ["name", "email", "surname", "phone", "shippingAddress", "shippingAddress2", "city", "zip", "state", "country"]
+	var formOk = true;
+	for( var i = 0; i < valuesArr.length; i++){
+		if($("#"+valuesArr[i]).val()==""){
+			$('#'+valuesArr[i]).addClass('error-class');
+			formOk = false;
+		}
+	}
+	if(formOk){
+		$.get('/place-order', { order : $('.shopping-cart').serialize() }, null, 'script')
+	}
+	else
+		e.preventDefault();
+}
+
+function formValidate(e){
+	var elements = $('.form-control')
+	var formOk = true;
+	for(var i = 0; i < elements.length; i++){
+		$ele = $(elements[i])
+		if(/query/.exec($ele.attr('name')) && $ele.val() == ""){
+			$ele.addClass('error-class');
+			formOk = false;
+		}
+	}
+	if(!formOk)
+		e.preventDefault();
+}
+

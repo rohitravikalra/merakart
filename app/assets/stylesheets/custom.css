@@ -3,3 +3,15 @@
 .color-sea-green{
 	color: #18ba9b;
 }
+
+.color-sea-green-background{
+	background: #18ba9b;
+}
+
+.btn-u:hover{
+	background: #18ba9b !important;	
+}
+
+.error-class {
+	border: solid 2px red!important;
+}

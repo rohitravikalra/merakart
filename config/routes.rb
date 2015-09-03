@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   get '/review' => 'static_pages#review'
   get '/checkout' => 'static_pages#checkout'
   get '/modify-cart' => 'static_pages#modify_cart'
+  get '/payment' => 'static_pages#payment'
+  get '/place-order' => 'static_pages#place_order'
+  get '/contact-us' => 'static_pages#contact_us'
+  post '/queries' => 'static_pages#queries'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

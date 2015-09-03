@@ -1,4 +1,7 @@
 class StaticPagesController < ApplicationController
+
+  skip_before_filter :verify_authenticity_token
+
   def home
   	@latest_products = Product.first(4)
   end
@@ -64,9 +67,16 @@ class StaticPagesController < ApplicationController
   end
 
   def modify_cart
+    @cart = false
+    @cart = true if params[:type]
   	key = "#{params[:id]}##{params[:old_qty]}"
   	if params[:qty].to_i == 0
-	  	session[:user_products].delete(key)
+      old_qty = params[:old_qty].to_i
+      while session[:user_products][key].blank?
+        old_qty += 1
+        key = "#{params[:id]}##{old_qty}"
+      end
+      session[:user_products].delete(key)
 	  else
 	  	new_key = "#{params[:id]}##{params[:qty]}"
 	  	session[:user_products][new_key] = session[:user_products].delete(key)
@@ -74,6 +84,39 @@ class StaticPagesController < ApplicationController
 	  respond_to do |format|
 	  	format.js { render layout: false}
 	  end
+  end
+
+  def place_order
+    decoded = params[:order]
+    begin
+      decoded = URI.decode(decoded) 
+    end while(decoded != URI.decode(decoded))
+    decoded_arr = decoded.split('&')
+    order = Hash.new
+    decoded_arr.each do |ele|
+      ele.gsub!('+', ' ')
+      ele_arr = ele.split('=')
+      order[ele_arr[0]] = ele_arr[1]
+    end
+    @order = Order.new(order)
+    if @order.save
+      session[:user_products] = nil
+    end
+    respond_to do |format|
+    format.js {render layout: false}
+    end
+  end
+
+  def queries
+    @query = Query.new(query_params)
+    if @query.save
+      redirect_to root_path
+    end
+  end
+
+  private
+  def query_params
+    params.require(:query).permit(:name, :email, :message)
   end
 
 end

@@ -1,1 +1,7 @@
-$('#cart-section').html("<%= j render(partial: 'cart_section') %>")
+<% if @cart %>
+	$('#shopping-cart').html("<%= j render(partial: 'cart')%>")
+<% else %>
+	$('#cart-section').html("<%= j render(partial: 'cart_section') %>")
+	$('#shopping-cart').html("<%= j render(partial: 'cart')%>")
+	$('#checkout-subtotal').html("<%= j render(partial: 'checkout_subtotal') %>")
+<% end %>
